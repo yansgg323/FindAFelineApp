@@ -10,4 +10,8 @@
     <ProjectReference Include="..\FindAFelineApp.Data\FindAFelineApp.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>
