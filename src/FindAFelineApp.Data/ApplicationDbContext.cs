@@ -1,5 +1,5 @@
 ﻿using FindAFelineApp.Data;
-using FindAFelineApp.Data.Entities
+using FindAFelineApp.Data.Entities;
 
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -23,10 +23,9 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<Applicatio
     public ApplicationDbContext CreateDbContext(string[] args)
     {
         var configuration = new ConfigurationBuilder()
-             .SetBasePath(Directory.GetCurrentDirectory())
+            .SetBasePath(Directory.GetCurrentDirectory())
              .AddJsonFile("appsettings.json")
              .Build();
-
         var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
         var connectionString = configuration.GetConnectionString("DefaultConnection");
         builder.UseSqlServer(connectionString);
