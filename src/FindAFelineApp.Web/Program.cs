@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using FindAFelineApp.Web.Data;
+using FindAFelineApp.Data;
 
 namespace FindAFelineApp.Web;
 
