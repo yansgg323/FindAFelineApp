@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace FindAFelineApp.Services
 {
-    class CatService : IService
+    class CatService : ICatService
     {
         private readonly ICrudRepository<Cat> _catRepository;
         private readonly IMapper _mapper;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FindAFelineApp.Services.Abstractions
 {
-    public interface IService
+    public interface ICatService
     {
         Task<List<CatDTO>> GetAllAsync();
         Task<CatDTO> GetByIdAsync(int id);
