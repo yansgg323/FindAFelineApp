@@ -16,6 +16,8 @@ namespace FindAFelineApp.Data
         }
 
         public DbSet<Cat> Cats { get; set; }
+        public DbSet<Adopter> Adopters { get; set; }
+        public DbSet<FosterParent> FosterParents { get; set; }
     }
 }
 public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
