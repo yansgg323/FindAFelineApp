@@ -43,8 +43,8 @@ namespace FindAFelineApp.Services
 
         public async Task<CatDTO> GetByIdAsync(int id)
         {
-            var car = await _catRepository.GetByIdAsync(id);
-            return _mapper.Map<CatDTO>(car);
+            var cat = await _catRepository.GetByIdAsync(id);
+            return _mapper.Map<CatDTO>(cat);
         }
 
         public async Task<List<CatDTO>> GetCarByBrandAsync(string breed)
