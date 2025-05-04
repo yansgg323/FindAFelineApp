@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace FindAFelineApp.Services.DTOs
         public int Age { get; set; }
         public string Color { get; set; }
         public string Personality { get; set; }
+        [Display(Name="Image")]
         public string ImageUrl { get; set; }
     }
 }
