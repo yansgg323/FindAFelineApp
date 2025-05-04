@@ -35,7 +35,7 @@ namespace FindAFelineApp.Services
             await _adopterRepository.DeleteByIdAsync(id);
         }
 
-        public async Task<List<CatDTO>> GetAllAsync()
+        public async Task<List<AdopterDTO>> GetAllAsync()
         {
             var adopters = await _adopterRepository.GetAllAsync();
             return _mapper.Map<List<AdopterDTO>>(adopters);
@@ -49,7 +49,7 @@ namespace FindAFelineApp.Services
 
         public async Task<List<AdopterDTO>> GetAdopterByFirstNameAsync(string firstName)
         {
-            var firstNameAdopters = await _adopterRepository.GetByFilterAsync(adopter => adopter.FirstName == FirstName);
+            var firstNameAdopters = await _adopterRepository.GetByFilterAsync(adopter => adopter.FirstName == firstName);
             return _mapper.Map<List<AdopterDTO>>(firstNameAdopters);
         }
 

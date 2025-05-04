@@ -1,4 +1,4 @@
-using AutoMapper;
+﻿using AutoMapper;
 using FindAFelineApp.Data.Entities;
 using FindAFelineApp.Services.DTOs;
 using System;
@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace FindAFelineApp.Services.Profiles
 {
-    class AdopterProfile : Profile
+    class FosterParentProfile : Profile
     {
-        public AdopterProfile()
+        public FosterParentProfile()
         {
             CreateMap<FosterParent, AdopterDTO>()
                 .ReverseMap();
