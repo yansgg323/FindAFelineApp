@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using FindAFelineApp.Data
+using FindAFelineApp.Data;
 using FindAFelineApp.Data.Entities;
 using FindAFelineApp.Services.Abstractions;
 using FindAFelineApp.Services.DTOs;
@@ -18,7 +18,7 @@ namespace FindAFelineApp.Web.Controllers
 
         public FosterParentController(IFosterParentService fosterParentService)
         {
-            _adopterService = adopterService;
+            _fosterParentService = fosterParentService;
         }
 
         // GET: FosterParent
