@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace FindAFelineApp.Services
 {
-    class CatService : ICatService
+    public class CatService : ICatService
     {
         private readonly ICrudRepository<Cat> _catRepository;
         private readonly IMapper _mapper;
@@ -24,9 +24,9 @@ namespace FindAFelineApp.Services
             _catRepository = catRepository;
             _mapper = mapper;
         }
-        public async Task AddAsync(CatDTO name)
+        public async Task AddAsync(CatDTO model)
         {
-            var cat = _mapper.Map<Cat>(name);
+            var cat = _mapper.Map<Cat>(model);
             await _catRepository.AddAsync(cat);
         }
 
@@ -47,15 +47,15 @@ namespace FindAFelineApp.Services
             return _mapper.Map<CatDTO>(cat);
         }
 
-        public async Task<List<CatDTO>> GetCarByBrandAsync(string breed)
+        public async Task<List<CatDTO>> GetCatByBreedAsync(string breed)
         {
             var breedCats= await _catRepository.GetByFilterAsync(cat => cat.Breed == breed);
             return _mapper.Map<List<CatDTO>>(breedCats);
         }
 
-        public async Task UpdateAsync(CatDTO name)
+        public async Task UpdateAsync(CatDTO model)
         {
-            var cat = _mapper.Map<Cat>(name);
+            var cat = _mapper.Map<Cat>(model);
             await _catRepository.UpdateAsync(cat);
         }
     }

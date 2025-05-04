@@ -11,7 +11,7 @@ using FindAFelineApp.Services.DTOs;
 
 namespace FindAFelineApp.Services
 {
-    class FosterParentService : IFosterParentService
+    public class FosterParentService : IFosterParentService
     {
         private readonly ICrudRepository<FosterParent> _fosterRepository;
         private readonly IMapper _mapper;
