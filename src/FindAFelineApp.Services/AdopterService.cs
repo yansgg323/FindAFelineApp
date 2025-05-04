@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace FindAFelineApp.Services
 {
-    class AdopterService : IAdopterService
+    public class AdopterService : IAdopterService
     {
         private readonly ICrudRepository<Adopter> _adopterRepository;
         private readonly IMapper _mapper;
