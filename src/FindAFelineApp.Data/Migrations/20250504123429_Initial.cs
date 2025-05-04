@@ -12,6 +12,27 @@ namespace FindAFelineApp.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Adopters",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Age = table.Column<int>(type: "int", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PreferredCatBreed = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PreferredCatAge = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PreferredCatPersonality = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Adopters", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -66,6 +87,24 @@ namespace FindAFelineApp.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cats", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FosterParents",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Age = table.Column<int>(type: "int", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FosterParents", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -218,6 +257,9 @@ namespace FindAFelineApp.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Adopters");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
@@ -234,6 +276,9 @@ namespace FindAFelineApp.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cats");
+
+            migrationBuilder.DropTable(
+                name: "FosterParents");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
