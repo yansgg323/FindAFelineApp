@@ -15,7 +15,6 @@ namespace FindAFelineApp.Services.DTOs
         [Range(18, 1000, ErrorMessage = "Age not appropriate!")]
         public int Age { get; set; }
         public string Email { get; set; }
-        []
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public int Id { get; set; }
