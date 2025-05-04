@@ -12,7 +12,7 @@ namespace FindAFelineApp.Services.DTOs
         public int Id { get; set; }
         public string Name { get; set; }
         public string Breed { get; set; }
-        // how do you make it so that the age cant be a negative number
+        [Range(0, 20, ErrorMessage = "Age can't be a negative number or higher than 20!")]
         public int Age { get; set; }
         public string Color { get; set; }
         public string Personality { get; set; }
