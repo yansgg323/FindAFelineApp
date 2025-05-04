@@ -13,7 +13,7 @@ namespace FindAFelineApp.Services.Profiles
     {
         public FosterParentProfile()
         {
-            CreateMap<FosterParent, AdopterDTO>()
+            CreateMap<FosterParent, FosterParentDTO>()
                 .ReverseMap();
         }
     }
