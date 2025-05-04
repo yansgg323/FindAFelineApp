@@ -1,4 +1,5 @@
-﻿using FindAFelineApp.Services.DTOs;
+﻿using FindAFelineApp.Data.Entities;
+using FindAFelineApp.Services.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace FindAFelineApp.Services.Abstractions
     {
         Task<List<CatDTO>> GetAllAsync();
         Task<CatDTO> GetByIdAsync(int id);
-        Task<List<CatDTO>> GetCarByBrandAsync(string name);
-        Task AddAsync(CatDTO breed);
-        Task UpdateAsync(CatDTO breed);
+        Task<List<CatDTO>> GetCatByBreedAsync(string breed);
+        Task AddAsync(CatDTO model);
+        Task UpdateAsync(CatDTO model);
         Task DeleteByIdAsync(int id);
     }
 }

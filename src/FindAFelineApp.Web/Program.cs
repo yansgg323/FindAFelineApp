@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using FindAFelineApp.Data;
+using FindAFelineApp.Data.Repositories.Abstractions;
+using FindAFelineApp.Data.Repositories;
+using FindAFelineApp.Services.Abstractions;
+using FindAFelineApp.Services;
 
 namespace FindAFelineApp.Web;
 
@@ -18,7 +22,11 @@ public class Program
 
         builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             .AddEntityFrameworkStores<ApplicationDbContext>();
+        builder.Services.AddTransient(typeof(ICrudRepository<>), typeof(CrudRepository<>));
+        builder.Services.AddTransient<ICatService, CatService>();
+
         builder.Services.AddControllersWithViews();
+        builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         var app = builder.Build();
 
