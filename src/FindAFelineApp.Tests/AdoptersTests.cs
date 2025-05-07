@@ -59,4 +59,27 @@ using System.Collections.Generic;
             Assert.AreNotEqual(newAdopter1.PhoneNumber, newAdopter2.PhoneNumber, "Phone number already exists");
             Assert.AreNotEqual(newAdopter1.Address, newAdopter2.Address, "Address already exists");
         }
+
+        [Test]
+        public async Task DeleteByIdAsync_Should_Remove_Adopter_If_Exists()
+        {
+            var adopter = _data.First();
+            _mockSet.Setup(m => m.FindAsync(It.IsAny<object[]>())).ReturnsAsync(adopter);
+
+            await _repository.DeleteByIdAsync(1);
+
+            _mockSet.Verify(m => m.Remove(adopter), Times.Once);
+            _mockContext.Verify(m => m.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
+        }
+
+        [Test]
+        public async Task GetAllAsync_Should_Return_All_Adopters()
+        {
+            var result = await _repository.GetAllAsync();
+
+            Assert.AreEqual(2, result.Count());
+        }
     }
+
+    
+
