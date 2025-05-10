@@ -26,9 +26,6 @@ namespace FindAFelineApp.Web.Controllers
             _userManager = userManager;
         }
 
-        public AdopterController(AdopterService service)
-        {
-        }
 
         // GET: Adopter
         public async Task<IActionResult> Index()
