@@ -27,6 +27,7 @@ public class Program
             .AddEntityFrameworkStores<ApplicationDbContext>();
         builder.Services.AddTransient(typeof(ICrudRepository<>), typeof(CrudRepository<>));
         builder.Services.AddTransient<IAdopterRepository, AdopterRepository>();
+        builder.Services.AddTransient<ICatRepository, CatRepository>();
         builder.Services.AddTransient<ICatService, CatService>();
         builder.Services.AddTransient<IAdopterService, AdopterService>();
         builder.Services.AddTransient<IFosterParentService, FosterParentService>();

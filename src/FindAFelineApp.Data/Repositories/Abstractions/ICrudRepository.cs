@@ -18,6 +18,5 @@ namespace FindAFelineApp.Data.Repositories.Abstractions
         public Task<IEnumerable<T>> GetAllAsync();
         public Task<T> GetByIdAsync(int id);
         public Task<IEnumerable<T>> GetByFilterAsync(Expression<Func<T, bool>> predicate);
-        
     }
 }
