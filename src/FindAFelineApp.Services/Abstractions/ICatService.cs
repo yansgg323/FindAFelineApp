@@ -17,5 +17,6 @@ namespace FindAFelineApp.Services.Abstractions
         Task AddAsync(CatDTO model);
         Task UpdateAsync(CatDTO model);
         Task DeleteByIdAsync(int id);
+        Task<List<CatDTO>> GetNotAdoptedAsync();
     }
 }

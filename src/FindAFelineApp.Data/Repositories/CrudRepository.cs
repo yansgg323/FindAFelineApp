@@ -45,6 +45,7 @@ namespace FindAFelineApp.Data.Repositories
         {
             return await _dbSet
                 .OrderByDescending(item => item.Id)
+                .Take(limit)
                 .ToListAsync();
         }
 

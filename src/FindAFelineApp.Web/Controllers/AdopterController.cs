@@ -9,16 +9,20 @@ using FindAFelineApp.Data;
 using FindAFelineApp.Data.Entities;
 using FindAFelineApp.Services.Abstractions;
 using FindAFelineApp.Services.DTOs;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace FindAFelineApp.Web.Controllers
 {
     public class AdopterController : Controller
     {
         private readonly IAdopterService _adopterService;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public AdopterController(IAdopterService adopterService)
+        public AdopterController(IAdopterService adopterService, UserManager<IdentityUser> userManager)
         {
             _adopterService = adopterService;
+            _userManager = userManager;
         }
 
         // GET: Adopter
@@ -44,6 +48,7 @@ namespace FindAFelineApp.Web.Controllers
         }
 
         // GET: Adopters/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -52,10 +57,13 @@ namespace FindAFelineApp.Web.Controllers
         // POST: Adopters/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(AdopterDTO model)
         {
+            var userId = (await _userManager.GetUserAsync(User))?.Id;
+            model.UserId = userId;
             if (ModelState.IsValid)
             {
                 await _adopterService.AddAsync(model);

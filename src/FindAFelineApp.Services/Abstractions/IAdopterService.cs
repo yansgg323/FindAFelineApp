@@ -11,9 +11,11 @@ namespace FindAFelineApp.Services.Abstractions
     {
         Task<List<AdopterDTO>> GetAllAsync();
         Task<AdopterDTO> GetByIdAsync(int id);
+        Task<AdopterDTO> GetByUserIdAsync(string userId);
         Task<List<AdopterDTO>> GetAdopterByFirstNameAsync(string firstName);
         Task AddAsync(AdopterDTO firstName);
         Task UpdateAsync(AdopterDTO firstName);
         Task DeleteByIdAsync(int id);
+        Task AdoptCatAsync(CatDTO catModel, AdopterDTO adopterModel);
     }
 }

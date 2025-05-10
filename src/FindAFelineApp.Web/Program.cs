@@ -17,12 +17,16 @@ public class Program
         // Add services to the container.
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(connectionString));
+        {
+            options.UseSqlServer(connectionString);
+            options.UseLazyLoadingProxies();
+        });
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
         builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             .AddEntityFrameworkStores<ApplicationDbContext>();
         builder.Services.AddTransient(typeof(ICrudRepository<>), typeof(CrudRepository<>));
+        builder.Services.AddTransient<IAdopterRepository, AdopterRepository>();
         builder.Services.AddTransient<ICatService, CatService>();
         builder.Services.AddTransient<IAdopterService, AdopterService>();
         builder.Services.AddTransient<IFosterParentService, FosterParentService>();

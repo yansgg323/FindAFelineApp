@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +18,8 @@ namespace FindAFelineApp.Data.Entities
         public string PreferredCatBreed { get; set; }
         public string PreferredCatAge { get; set; }
         public string PreferredCatPersonality { get; set; }
+        public string UserId { get; set; }
+        public virtual IdentityUser? User { get; set; }
+        public virtual ICollection<Cat>? AdoptedCats { get; set; } = new List<Cat>();
     }
 }

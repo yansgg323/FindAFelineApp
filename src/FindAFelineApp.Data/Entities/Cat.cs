@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,5 +15,8 @@ namespace FindAFelineApp.Data.Entities
         public string Color { get; set; }
         public string Personality { get; set; }
         public string ImageUrl { get; set; }
+        [AllowNull]
+        public int? AdopterId { get; set; }
+        public virtual Adopter? Adopter { get; set; }
     }
 }
