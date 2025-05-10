@@ -10,6 +10,7 @@ namespace FindAFelineApp.Services.Abstractions
 {
     public interface ICatService
     {
+        Task<List<CatDTO>> GetFeaturedAsync(int limit);
         Task<List<CatDTO>> GetAllAsync();
         Task<CatDTO> GetByIdAsync(int id);
         Task<List<CatDTO>> GetCatByBreedAsync(string breed);

@@ -36,12 +36,19 @@ namespace FindAFelineApp.Data.Repositories
                 }
             }
 
-            public async Task<IEnumerable<T>> GetAllAsync()
-            {
-                return await _dbSet.ToListAsync();
-            }
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            return await _dbSet.ToListAsync();
+        }
 
-            public async Task<IEnumerable<T>> GetByFilterAsync(Expression<Func<T, bool>> predicate)
+        public async Task<IEnumerable<T>> GetLatestAsync(int limit)
+        {
+            return await _dbSet
+                .OrderByDescending(item => item.Id)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetByFilterAsync(Expression<Func<T, bool>> predicate)
             {
                 return await _dbSet
                     .Where(predicate)
