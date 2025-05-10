@@ -11,6 +11,7 @@ using FindAFelineApp.Services.Abstractions;
 using FindAFelineApp.Services.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using FindAFelineApp.Services;
 
 namespace FindAFelineApp.Web.Controllers
 {
@@ -24,6 +25,7 @@ namespace FindAFelineApp.Web.Controllers
             _adopterService = adopterService;
             _userManager = userManager;
         }
+
 
         // GET: Adopter
         public async Task<IActionResult> Index()

@@ -52,6 +52,7 @@ namespace FindAFelineApp.Web.Controllers
         }
 
         // GET: Cats/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -62,6 +63,7 @@ namespace FindAFelineApp.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(CatDTO model)
         {
             if (ModelState.IsValid)
@@ -74,6 +76,7 @@ namespace FindAFelineApp.Web.Controllers
 
         [Authorize]
         [HttpGet("Cats/Adopt/{catId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Adopt(int? catId)
         {
             if (catId == null)
@@ -99,6 +102,7 @@ namespace FindAFelineApp.Web.Controllers
         }
 
         // GET: Cats/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -119,6 +123,7 @@ namespace FindAFelineApp.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> Edit(int id, CatDTO model)
         {
             if (id != model.Id)
@@ -149,6 +154,7 @@ namespace FindAFelineApp.Web.Controllers
         }
 
         // GET: Cats/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -167,6 +173,7 @@ namespace FindAFelineApp.Web.Controllers
 
         // POST: Cats/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

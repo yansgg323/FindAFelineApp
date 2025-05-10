@@ -15,10 +15,10 @@ namespace FindAFelineApp.Services
 {
     public class CatService : ICatService
     {
-        private readonly ICrudRepository<Cat> _catRepository;
+        private readonly ICatRepository _catRepository;
         private readonly IMapper _mapper;
 
-        public CatService(ICrudRepository<Cat> catRepository,
+        public CatService(ICatRepository catRepository,
             IMapper mapper)
         {
             _catRepository = catRepository;
