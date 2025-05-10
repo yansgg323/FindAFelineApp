@@ -29,9 +29,9 @@ using System.Collections.Generic;
                 Age = 2,
                 Breed = "Siamese",
                 Color = "Brown",
-                Personality = "Playful"
+                Personality = "Playful",
                 ImageUrl = "https://example.com/whiskers.jpg" 
-            }
+            },
                 // },
             new Cat 
             { 
