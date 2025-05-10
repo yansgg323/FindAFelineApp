@@ -53,6 +53,18 @@ namespace FindAFelineApp.Services
             return _mapper.Map<List<CatDTO>>(breedCats);
         }
 
+        public async Task<List<CatDTO>> GetFeaturedAsync(int limit)
+        {
+            var cats = await _catRepository.GetLatestAsync(limit);
+            return _mapper.Map<List<CatDTO>>(cats);
+        }
+
+        public async Task<List<CatDTO>> GetNotAdoptedAsync()
+        {
+            var cats = await _catRepository.GetByFilterAsync(cat => cat.AdopterId == null);
+            return _mapper.Map<List<CatDTO>>(cats);
+        }
+
         public async Task UpdateAsync(CatDTO model)
         {
             var cat = _mapper.Map<Cat>(model);

@@ -9,22 +9,29 @@ using FindAFelineApp.Data;
 using FindAFelineApp.Data.Entities;
 using FindAFelineApp.Services.Abstractions;
 using FindAFelineApp.Services.DTOs;
+using FindAFelineApp.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace FindAFelineApp.Web.Controllers
 {
     public class CatsController : Controller
     {
         private readonly ICatService _catService;
+        private readonly IAdopterService _adopterService;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public CatsController(ICatService catService)
+        public CatsController(ICatService catService, IAdopterService adopterService, UserManager<IdentityUser> userManager)
         {
             _catService = catService;
+            _adopterService = adopterService;
+            _userManager = userManager;
         }
 
         // GET: Cats
         public async Task<IActionResult> Index()
         {
-            return View(await _catService.GetAllAsync());
+            return View(await _catService.GetNotAdoptedAsync());
         }
 
         // GET: Cats/Details/5
@@ -63,6 +70,32 @@ namespace FindAFelineApp.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(model);
+        }
+
+        [Authorize]
+        [HttpGet("Cats/Adopt/{catId}")]
+        public async Task<IActionResult> Adopt(int? catId)
+        {
+            if (catId == null)
+            {
+                return NotFound();
+            }
+
+            var userId = (await _userManager.GetUserAsync(User))?.Id;
+            var adopter = await _adopterService.GetByUserIdAsync(userId);
+            if (adopter == null)
+            {
+                return RedirectToAction("Create", "Adopter");
+            }
+
+            var cat = await _catService.GetByIdAsync(catId.Value);
+
+            if(cat == null)
+            {
+                return NotFound();
+            }
+            await _adopterService.AdoptCatAsync(cat, adopter);
+            return View(adopter);
         }
 
         // GET: Cats/Edit/5

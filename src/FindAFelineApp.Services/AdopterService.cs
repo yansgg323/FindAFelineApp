@@ -15,10 +15,10 @@ namespace FindAFelineApp.Services
 {
     public class AdopterService : IAdopterService
     {
-        private readonly ICrudRepository<Adopter> _adopterRepository;
+        private readonly IAdopterRepository _adopterRepository;
         private readonly IMapper _mapper;
 
-        public AdopterService(ICrudRepository<Adopter> adopterRepository,
+        public AdopterService(IAdopterRepository adopterRepository,
             IMapper mapper)
         {
             _adopterRepository = adopterRepository;
@@ -57,6 +57,20 @@ namespace FindAFelineApp.Services
         {
             var adopter = _mapper.Map<Adopter>(firstName);
             await _adopterRepository.UpdateAsync(adopter);
+        }
+
+        public async Task<AdopterDTO> GetByUserIdAsync(string userId)
+        {
+            var adopters = await _adopterRepository.GetByFilterAsync(adopter => adopter.UserId == userId);
+            
+            return _mapper.Map<AdopterDTO>(adopters.FirstOrDefault());
+        }
+
+        public async Task AdoptCatAsync(CatDTO catModel, AdopterDTO adopterModel)
+        {
+            var cat = _mapper.Map<Cat>(catModel);
+            var adopter = _mapper.Map<Adopter>(adopterModel);
+            await _adopterRepository.AdoptAsync(adopter.Id, cat.Id);
         }
     }
 }

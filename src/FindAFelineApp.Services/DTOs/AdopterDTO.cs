@@ -21,5 +21,7 @@ namespace FindAFelineApp.Services.DTOs
         public string PreferredCatAge { get; set; }
         public string PreferredCatPersonality { get; set; }
         public int Id { get; set; }
+        public string? UserId { get; set; }
+        public List<CatDTO> AdoptedCats { get; set; }
     }
 }

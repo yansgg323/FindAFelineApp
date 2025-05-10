@@ -46,11 +46,6 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PhoneNumber)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.PreferredCatBreed)
@@ -71,6 +66,12 @@
             @Html.DisplayFor(model => model.PreferredCatPersonality)
         </dd>
     </dl>
+
+    <h1>Adopted cats</h1>
+    @foreach(var cat in Model.AdoptedCats)
+    {
+        <p>@cat.Name</p>
+    }
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |

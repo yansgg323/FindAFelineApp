@@ -4,6 +4,7 @@ using FindAFelineApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FindAFelineApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250510093946_AdopterUserRelationship")]
+    partial class AdopterUserRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,9 +87,6 @@ namespace FindAFelineApp.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AdopterId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
@@ -111,8 +111,6 @@ namespace FindAFelineApp.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AdopterId");
 
                     b.ToTable("Cats");
                 });
@@ -362,15 +360,6 @@ namespace FindAFelineApp.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("FindAFelineApp.Data.Entities.Cat", b =>
-                {
-                    b.HasOne("FindAFelineApp.Data.Entities.Adopter", "Adopter")
-                        .WithMany("AdoptedCats")
-                        .HasForeignKey("AdopterId");
-
-                    b.Navigation("Adopter");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -420,11 +409,6 @@ namespace FindAFelineApp.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("FindAFelineApp.Data.Entities.Adopter", b =>
-                {
-                    b.Navigation("AdoptedCats");
                 });
 #pragma warning restore 612, 618
         }

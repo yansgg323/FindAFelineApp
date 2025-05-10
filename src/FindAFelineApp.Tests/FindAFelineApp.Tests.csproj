@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FindAFelineApp.Data\FindAFelineApp.Data.csproj" />
     <ProjectReference Include="..\FindAFelineApp.Services\FindAFelineApp.Services.csproj" />
+    <ProjectReference Include="..\FindAFelineApp.Web\FindAFelineApp.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>
