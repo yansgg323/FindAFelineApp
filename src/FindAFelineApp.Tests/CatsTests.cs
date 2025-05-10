@@ -28,7 +28,7 @@ public class CatsTests
             Breed = "Siamese",
             Color = "Brown",
            Personality = "Playful",
-            ImageUrl = "https://example.com/whiskers.jpg" 
+            ImageUrl = "https://example.com/whiskers.jpg" ,
         },
             // },
         new Cat 
@@ -39,13 +39,13 @@ public class CatsTests
             Breed = "Persian",
             Color = "White",
             Personality = "Calm",
-           ImageUrl = "https://example.com/mittens.jpg" 
+           ImageUrl = "https://example.com/mittens.jpg" ,
         }
     };
 
-       var asyncData = _data.AsQueryable().ToAsyncEnumerable();
+       var asyncData = _data.AsQueryable().AsAsyncEnumerable();
 
-        _mockSet = new Mock<DbSet<Car>>();
+        _mockSet = new Mock<DbSet<Cat>>();
 
         // This supports .ToListAsync() and other async methods
         _mockSet.As<IAsyncEnumerable<Cat>>()
@@ -69,14 +69,14 @@ public class CatsTests
     }
 
 
-    [TestMethod]
+    [Test]
     public void TestCreateCat_ShouldCreateNewIndividualCat()
     {
         // Arrange
         var mockSet = new Mock<DbSet<Cat>>();
         var mockContext = new Mock<ApplicationDbContext>();
         var mockRepository = new CrudRepository<Cat>(mockContext.Object);
-        var controller = new CatController(mockRepository);
+        var controller = new CatsController(mockRepository);
 
         var newCat1 = new CatDTO
         {
@@ -85,7 +85,7 @@ public class CatsTests
             Breed = "Siamese",
             Color = "Brown",
             Personality = "Playful",
-            ImageUrl = "https://example.com/whiskers.jpg"
+            ImageUrl = "https://example.com/whiskers.jpg",
         };
         var newCat2 = new CatDTO
         {
@@ -94,7 +94,7 @@ public class CatsTests
             Breed = "Persian",
             Color = "White",
             Personality = "Calm",
-            ImageUrl = "https://example.com/mittens.jpg"
+            ImageUrl = "https://example.com/mittens.jpg",
         };
         // Act
 
