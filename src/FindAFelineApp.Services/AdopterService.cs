@@ -24,6 +24,11 @@ namespace FindAFelineApp.Services
             _adopterRepository = adopterRepository;
             _mapper = mapper;
         }
+
+        public AdopterService(CrudRepository<Adopter> mockRepository, IMapper @object)
+        {
+        }
+
         public async Task AddAsync(AdopterDTO firstName)
         {
             var adopter = _mapper.Map<Adopter>(firstName);
