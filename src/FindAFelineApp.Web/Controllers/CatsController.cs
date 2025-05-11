@@ -76,7 +76,6 @@ namespace FindAFelineApp.Web.Controllers
 
         [Authorize]
         [HttpGet("Cats/Adopt/{catId}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Adopt(int? catId)
         {
             if (catId == null)
