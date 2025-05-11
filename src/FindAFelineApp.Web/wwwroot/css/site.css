@@ -34,22 +34,21 @@ body {
     justify-content: center;
 }
 
-/* .card 
+.card 
 {
     background-color: white;
     margin-bottom:100px
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    flex: 1 0 0px;
-    width: 500px;
+    flex: 1 0 0px width: 500px;
     margin: auto;
     text-align: center;
     font-family: arial;
     flex-wrap: wrap;
     padding: 8px;
-} */
+} 
 
 
-.card
+/*.card
 {
     background-color: oldlace;
     display: flex;
@@ -79,4 +78,4 @@ body {
 {
     max-width: 100%;
     border-radius: 50%;
-}
+}*/
